@@ -9,6 +9,7 @@ permissions:
 
 jobs:
   main:
+    # Required check in the "main" ruleset on GitHub — rename it there too
     name: Validate PR title
     runs-on: ubuntu-latest
     timeout-minutes: 5

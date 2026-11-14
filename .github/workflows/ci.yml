@@ -14,6 +14,7 @@ permissions:
 
 jobs:
   check:
+    # Required check in the "main" ruleset on GitHub — rename it there too
     name: Check
     runs-on: ubuntu-latest
     timeout-minutes: 15
