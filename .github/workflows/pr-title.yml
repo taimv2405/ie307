@@ -23,3 +23,15 @@ jobs:
           subjectPatternError: |
             The subject "{subject}" in the PR title "{title}" must start with a lowercase letter,
             e.g. "feat(api): add auth module".
+      # Squash merge appends " (#<number>)", so keep the final commit header within 72 chars
+      - name: Check title length
+        env:
+          TITLE: ${{ github.event.pull_request.title }}
+          PR_NUMBER: ${{ github.event.pull_request.number }}
+        run: |
+          suffix=" (#${PR_NUMBER})"
+          max=$(( 72 - ${#suffix} ))
+          if [ "${#TITLE}" -gt "$max" ]; then
+            echo "::error::PR title is ${#TITLE} chars; max is $max so the squash commit header (title + \"$suffix\") stays within 72."
+            exit 1
+          fi
