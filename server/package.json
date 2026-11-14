@@ -1,0 +1,10 @@
+{
+  "name": "nhat-server",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "setup": "node scripts/fetch-cmudict.mjs",
+    "start": "node server.mjs"
+  },
+  "engines": { "node": ">=22" }
+}
