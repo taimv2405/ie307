@@ -32,7 +32,6 @@
     "eslint": "^9.0.0",
     "eslint-config-expo": "~58.0.4",
     "eslint-config-prettier": "^10.1.8",
-    "prettier": "3.10.1",
     "typescript": "~6.0.3"
   },
   "scripts": {
@@ -41,8 +40,6 @@
     "dev:ios": "expo start --ios",
     "dev:web": "expo start --web",
     "lint": "expo lint",
-    "format": "prettier . --write",
-    "format:check": "prettier . --check",
     "typecheck": "tsc --noEmit"
   },
   "private": true
