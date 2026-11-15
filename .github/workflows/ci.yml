@@ -28,5 +28,4 @@ jobs:
           require-lockfile: true
       - run: pnpm format:check
       - run: pnpm -F mobile exec expo install --check
-      - run: pnpm -F mobile exec expo customize tsconfig.json
       - run: pnpm exec turbo run lint typecheck test build
