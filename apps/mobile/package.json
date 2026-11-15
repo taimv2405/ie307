@@ -48,9 +48,10 @@
     "dev:ios": "expo start --ios",
     "dev:web": "expo start --web",
     "lint": "expo lint",
-    "typecheck": "expo customize tsconfig.json && tsc --noEmit",
+    "typecheck": "tsc --noEmit",
     "test": "jest",
-    "test:watch": "jest --watch"
+    "test:watch": "jest --watch",
+    "postinstall": "expo customize tsconfig.json"
   },
   "private": true,
   "jest": {
