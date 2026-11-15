@@ -19,12 +19,16 @@
       },
       "predictiveBackGestureEnabled": false
     },
-    "web": {
-      "output": "server",
-      "favicon": "./assets/images/favicon.png"
-    },
+    "platforms": ["ios", "android"],
     "plugins": [
       "expo-router",
+      [
+        "expo-image-picker",
+        {
+          "cameraPermission": "Cho phép $(PRODUCT_NAME) dùng camera để chụp ảnh.",
+          "microphonePermission": false
+        }
+      ],
       [
         "expo-splash-screen",
         {
