@@ -3,3 +3,13 @@ dist/
 coverage/
 .turbo/
 *.tsbuildinfo
+
+# local env files
+.env
+.env*.local
+
+# logs
+*.log
+
+# macOS
+.DS_Store
