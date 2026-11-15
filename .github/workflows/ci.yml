@@ -28,6 +28,5 @@ jobs:
           require-lockfile: true
       - run: pnpm format:check
       - run: pnpm -F mobile exec expo install --check
-      # Generates the gitignored expo-env.d.ts and typed routes for tsc: https://docs.expo.dev/router/reference/typed-routes/#type-generation
       - run: pnpm -F mobile exec expo customize tsconfig.json
       - run: pnpm exec turbo run lint typecheck test build
