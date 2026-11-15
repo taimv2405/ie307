@@ -3,6 +3,7 @@
     "dbaeumer.vscode-eslint",
     "oxc.oxc-vscode",
     "esbenp.prettier-vscode",
-    "expo.vscode-expo-tools"
+    "expo.vscode-expo-tools",
+    "bradlc.vscode-tailwindcss"
   ]
 }
