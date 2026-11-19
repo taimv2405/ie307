@@ -1,9 +1,5 @@
-import { Text, View } from "react-native";
+import { HomeScreen } from "@/components/home/home-screen";
 
 export default function Index() {
-  return (
-    <View className="flex-1 items-center justify-center">
-      <Text>Edit src/app/index.tsx to edit this screen.</Text>
-    </View>
-  );
+  return <HomeScreen />;
 }
