@@ -1,7 +1,6 @@
 pnpm-lock.yaml
 apps/*/.expo/
 apps/*/dist/
-apps/*/web-build/
 apps/*/ios/
 apps/*/android/
 apps/mobile/assets/
