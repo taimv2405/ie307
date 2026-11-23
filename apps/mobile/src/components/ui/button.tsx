@@ -1,5 +1,11 @@
 import { cva, type VariantProps } from "class-variance-authority";
-import { Platform, Pressable } from "react-native";
+import { useState } from "react";
+import {
+  type Insets,
+  type LayoutRectangle,
+  Platform,
+  Pressable,
+} from "react-native";
 
 import { TextClassContext } from "@/components/ui/text";
 import { cn } from "@/lib/utils";
@@ -104,7 +110,27 @@ type ButtonProps = React.ComponentProps<typeof Pressable> &
   React.RefAttributes<typeof Pressable> &
   VariantProps<typeof buttonVariants>;
 
-function Button({ className, variant, size, ...props }: ButtonProps) {
+const MIN_TOUCH_TARGET = 48;
+
+function getMinTouchTargetHitSlop({
+  width,
+  height,
+}: Pick<LayoutRectangle, "width" | "height">): Insets | undefined {
+  const horizontal = Math.max(0, (MIN_TOUCH_TARGET - width) / 2);
+  const vertical = Math.max(0, (MIN_TOUCH_TARGET - height) / 2);
+  if (horizontal === 0 && vertical === 0) {
+    return undefined;
+  }
+  return {
+    top: vertical,
+    bottom: vertical,
+    left: horizontal,
+    right: horizontal,
+  };
+}
+
+function Button({ className, variant, size, onLayout, ...props }: ButtonProps) {
+  const [hitSlop, setHitSlop] = useState<Insets>();
   return (
     <TextClassContext.Provider value={buttonTextVariants({ variant, size })}>
       <Pressable
@@ -113,6 +139,11 @@ function Button({ className, variant, size, ...props }: ButtonProps) {
           buttonVariants({ variant, size }),
           className,
         )}
+        hitSlop={hitSlop}
+        onLayout={(event) => {
+          setHitSlop(getMinTouchTargetHitSlop(event.nativeEvent.layout));
+          onLayout?.(event);
+        }}
         role="button"
         {...props}
       />
