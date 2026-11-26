@@ -24,6 +24,12 @@ module.exports = defineConfig([
     languageOptions: { globals: { __dirname: "readonly" } },
   },
   {
+    files: ["**/*.{ts,tsx}"],
+    rules: {
+      "import/no-named-as-default-member": "off",
+    },
+  },
+  {
     files: ["src/**/*.{js,jsx,ts,tsx}"],
     rules: {
       "import/no-cycle": "error",

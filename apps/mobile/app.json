@@ -33,7 +33,14 @@
       ],
       "expo-web-browser",
       "expo-status-bar",
-      "expo-image"
+      "expo-image",
+      [
+        "expo-localization",
+        {
+          "supportsRTL": false
+        }
+      ],
+      "expo-sqlite"
     ],
     "experiments": {
       "typedRoutes": true,
