@@ -14,23 +14,33 @@ const css = fs.readFileSync(
 
 const schemes: Record<string, string> = {
   ":root": "light",
+  ".dark:root": "dark",
 };
+
+function toKey(name: string) {
+  return name.replace(/-(\w)/g, (_, char: string) => char.toUpperCase());
+}
 
 function parseTokens(block: string) {
   return Object.fromEntries(
     [...block.matchAll(/--([\w-]+):\s*([^;]+);/g)].map(([, name, value]) => [
-      name,
-      `rgb(${value.trim()})`,
+      toKey(name),
+      name === "radius" ? value.trim() : `hsl(${value.trim()})`,
     ]),
   );
 }
 
-const themes = Object.fromEntries(
+const blocks = Object.fromEntries(
   [...css.matchAll(/([^{}]+)\{([^{}]*)\}/g)].map(([, selector, block]) => [
     schemes[selector.trim()],
     parseTokens(block),
   ]),
 );
+
+const themes = {
+  light: blocks.light,
+  dark: { ...blocks.light, ...blocks.dark },
+};
 
 describe("THEME", () => {
   test("matches the tokens in global.css", () => {

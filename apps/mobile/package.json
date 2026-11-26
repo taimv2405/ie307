@@ -4,6 +4,7 @@
   "main": "expo-router/entry",
   "dependencies": {
     "@expo/ui": "~58.0.29",
+    "@rn-primitives/portal": "^1.5.3",
     "@rn-primitives/select": "^1.5.2",
     "@rn-primitives/slot": "^1.5.2",
     "class-variance-authority": "^0.7.1",
