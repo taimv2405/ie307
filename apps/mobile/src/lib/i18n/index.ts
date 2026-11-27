@@ -11,29 +11,32 @@ export const resources = {
   vi: { translation: viTranslations },
 } as const;
 
-export type Language = keyof typeof resources;
+export type AppLanguage = keyof typeof resources;
 
-export const LANGUAGES = Object.keys(resources) as Language[];
+export const APP_LANGUAGES = Object.keys(resources) as AppLanguage[];
 
-export const FALLBACK_LANGUAGE: Language = "en";
+export const FALLBACK_LANGUAGE: AppLanguage = "en";
 
-export const LANGUAGE_NAMES: Record<Language, string> = {
-  en: "English",
-  vi: "Tiếng Việt",
+export const APP_LANGUAGE_INFO: Record<
+  AppLanguage,
+  { name: string; flag: string }
+> = {
+  en: { name: "English", flag: "🇬🇧" },
+  vi: { name: "Tiếng Việt", flag: "🇻🇳" },
 };
 
-export function isLanguage(value: unknown): value is Language {
-  return LANGUAGES.includes(value as Language);
+export function isAppLanguage(value: unknown): value is AppLanguage {
+  return APP_LANGUAGES.includes(value as AppLanguage);
 }
 
 const LANGUAGE_KEY = "language";
 
 function getStoredLanguage() {
   const stored = Storage.getItemSync(LANGUAGE_KEY);
-  return isLanguage(stored) ? stored : null;
+  return isAppLanguage(stored) ? stored : null;
 }
 
-export async function setLanguage(language: Language) {
+export async function setLanguage(language: AppLanguage) {
   await i18n.changeLanguage(language);
   await Storage.setItem(LANGUAGE_KEY, language);
 }
@@ -45,7 +48,7 @@ i18n.use(initReactI18next).init({
     getLocales().at(0)?.languageCode ??
     FALLBACK_LANGUAGE,
   fallbackLng: FALLBACK_LANGUAGE,
-  supportedLngs: LANGUAGES,
+  supportedLngs: APP_LANGUAGES,
   interpolation: { escapeValue: false },
   react: { transSupportBasicHtmlNodes: false },
 });
