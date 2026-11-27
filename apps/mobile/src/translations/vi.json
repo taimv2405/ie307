@@ -6,6 +6,12 @@
     "language": {
       "title": "Ngôn ngữ hiển thị"
     },
+    "theme": {
+      "dark": "Tối",
+      "light": "Sáng",
+      "system": "Hệ thống",
+      "title": "Giao diện"
+    },
     "title": "Cài đặt"
   }
 }

@@ -6,6 +6,12 @@
     "language": {
       "title": "Display language"
     },
+    "theme": {
+      "dark": "Dark",
+      "light": "Light",
+      "system": "System",
+      "title": "Theme"
+    },
     "title": "Settings"
   }
 }

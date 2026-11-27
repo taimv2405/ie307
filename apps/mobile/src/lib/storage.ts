@@ -1,7 +1,7 @@
 import Storage from "expo-sqlite/kv-store";
 import type { ZodType } from "zod";
 
-type StorageKey = "language";
+type StorageKey = "colorScheme" | "language";
 
 export function createStorageItem<T extends string>(
   key: StorageKey,
