@@ -9,10 +9,18 @@ export function createStorageItem<T extends string>(
 ) {
   return {
     get(): T | undefined {
-      const result = schema.safeParse(Storage.getItemSync(key));
+      let stored: string | null;
+      try {
+        stored = Storage.getItemSync(key);
+      } catch {
+        // TODO: report read failures once the app has shared error reporting
+        return undefined;
+      }
+      const result = schema.safeParse(stored);
       return result.success ? result.data : undefined;
     },
     set(value: T) {
+      // TODO: handle write failures once the app has shared error reporting
       return Storage.setItem(key, value);
     },
   };

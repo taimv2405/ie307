@@ -31,7 +31,7 @@ export function initColorScheme() {
   colorScheme.set(getStoredColorScheme());
 }
 
-const StateContext = createContext<AppColorScheme>(DEFAULT_COLOR_SCHEME);
+const StateContext = createContext<AppColorScheme | null>(null);
 StateContext.displayName = "ColorSchemeStateContext";
 
 const SetContext = createContext<((scheme: AppColorScheme) => void) | null>(
@@ -45,7 +45,6 @@ export function ColorSchemeProvider({ children }: { children: ReactNode }) {
   function setColorSchemePreference(scheme: AppColorScheme) {
     setPreference(scheme);
     colorScheme.set(scheme);
-    // TODO: handle the rejected promise once the app has shared error reporting
     colorSchemeStorage.set(scheme);
   }
 
@@ -75,7 +74,13 @@ export function ColorSchemeProvider({ children }: { children: ReactNode }) {
 }
 
 export function useColorSchemePreference() {
-  return use(StateContext);
+  const colorSchemePreference = use(StateContext);
+  if (!colorSchemePreference) {
+    throw new Error(
+      "useColorSchemePreference must be used within ColorSchemeProvider",
+    );
+  }
+  return colorSchemePreference;
 }
 
 export function useSetColorSchemePreference() {

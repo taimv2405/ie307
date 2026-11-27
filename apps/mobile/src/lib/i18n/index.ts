@@ -35,7 +35,6 @@ export function isAppLanguage(value: unknown): value is AppLanguage {
 }
 
 export function setLanguage(language: AppLanguage) {
-  // TODO: handle the rejected promises once the app has shared error reporting
   i18n.changeLanguage(language);
   languageStorage.set(language);
 }
