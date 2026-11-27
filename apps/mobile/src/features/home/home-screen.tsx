@@ -17,7 +17,7 @@ export function HomeScreen() {
             variant="ghost"
             size="icon"
             className="rounded-full"
-            accessibilityLabel={t("settings.title")}
+            aria-label={t("settings.title")}
             onPress={() => router.push("/settings")}
           >
             <Icon as={Settings} size={24} />

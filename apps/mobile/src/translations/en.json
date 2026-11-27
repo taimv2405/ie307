@@ -3,14 +3,14 @@
     "title": "Home"
   },
   "settings": {
-    "language": {
-      "title": "Display language"
-    },
-    "theme": {
+    "colorScheme": {
       "dark": "Dark",
       "light": "Light",
       "system": "System",
       "title": "Theme"
+    },
+    "language": {
+      "title": "Display language"
     },
     "title": "Settings"
   }

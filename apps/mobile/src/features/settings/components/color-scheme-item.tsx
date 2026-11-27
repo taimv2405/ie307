@@ -20,18 +20,18 @@ const COLOR_SCHEME_ICONS: Record<AppColorScheme, LucideIcon> = {
   dark: Moon,
 };
 
-export function ThemeItem() {
+export function ColorSchemeItem() {
   const { t } = useTranslation();
   const colorSchemePreference = useColorSchemePreference();
   const setColorSchemePreference = useSetColorSchemePreference();
 
   return (
     <SettingsSelect
-      title={t("settings.theme.title")}
+      title={t("settings.colorScheme.title")}
       value={colorSchemePreference}
       options={APP_COLOR_SCHEMES.map((scheme) => ({
         value: scheme,
-        label: t(`settings.theme.${scheme}`),
+        label: t(`settings.colorScheme.${scheme}`),
         icon: <Icon as={COLOR_SCHEME_ICONS[scheme]} className="size-4" />,
       }))}
       onValueChange={setColorSchemePreference}

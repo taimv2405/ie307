@@ -34,9 +34,10 @@ export function isAppLanguage(value: unknown): value is AppLanguage {
   return languageSchema.safeParse(value).success;
 }
 
-export async function setLanguage(language: AppLanguage) {
-  await i18n.changeLanguage(language);
-  await languageStorage.set(language);
+export function setLanguage(language: AppLanguage) {
+  // TODO: handle the rejected promises once the app has shared error reporting
+  i18n.changeLanguage(language);
+  languageStorage.set(language);
 }
 
 export function initI18n() {

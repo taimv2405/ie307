@@ -25,10 +25,7 @@ export function LanguageItem() {
       title={t("settings.language.title")}
       value={isAppLanguage(current) ? current : undefined}
       options={LANGUAGE_OPTIONS}
-      onValueChange={(language) => {
-        // TODO: handle the rejected promise once the app has shared error reporting
-        setLanguage(language);
-      }}
+      onValueChange={setLanguage}
     />
   );
 }
