@@ -18,14 +18,14 @@ type SettingsSelectOption<T extends string> = {
 };
 
 type SettingsSelectProps<T extends string> = {
-  label: string;
+  title: string;
   value: T | undefined;
   options: readonly SettingsSelectOption<T>[];
   onValueChange: (value: T) => void;
 };
 
 export function SettingsSelect<T extends string>({
-  label,
+  title,
   value,
   options,
   onValueChange,
@@ -33,24 +33,24 @@ export function SettingsSelect<T extends string>({
   const selected = options.find((option) => option.value === value);
 
   return (
-    <SettingsItem label={label}>
+    <SettingsItem title={title}>
       <Select
-        value={selected && { value: selected.value, label: selected.label }}
-        onValueChange={(next) => {
-          const option = options.find(({ value }) => value === next?.value);
+        value={selected}
+        onValueChange={(picked) => {
+          const option = options.find((item) => item.value === picked?.value);
           if (option) {
             onValueChange(option.value);
           }
         }}
       >
         <SelectTrigger
-          aria-label={label}
+          aria-label={title}
           aria-valuetext={selected?.label}
           className="min-w-[140px]"
         >
           <View className="flex-row items-center gap-2">
             {selected && <View aria-hidden>{selected.icon}</View>}
-            <SelectValue placeholder={label} />
+            <SelectValue placeholder={title} />
           </View>
         </SelectTrigger>
         <SelectContent className="min-w-[140px]">

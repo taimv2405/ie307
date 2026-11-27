@@ -22,7 +22,7 @@ export function LanguageItem() {
 
   return (
     <SettingsSelect
-      label={t("settings.language.title")}
+      title={t("settings.language.title")}
       value={isAppLanguage(current) ? current : undefined}
       options={LANGUAGE_OPTIONS}
       onValueChange={(language) => {

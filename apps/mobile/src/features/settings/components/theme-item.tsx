@@ -27,7 +27,7 @@ export function ThemeItem() {
 
   return (
     <SettingsSelect
-      label={t("settings.theme.title")}
+      title={t("settings.theme.title")}
       value={colorSchemePreference}
       options={APP_COLOR_SCHEMES.map((scheme) => ({
         value: scheme,
