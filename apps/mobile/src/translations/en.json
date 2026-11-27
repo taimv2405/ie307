@@ -1,4 +1,5 @@
 {
-  "language": "Language",
-  "welcome": "Hello"
+  "home": "Home",
+  "language": "Display language",
+  "settings": "Settings"
 }
