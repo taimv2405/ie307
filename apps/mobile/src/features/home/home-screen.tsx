@@ -11,13 +11,13 @@ export function HomeScreen() {
   return (
     <Stack.Screen
       options={{
-        title: t("home"),
+        title: t("home.title"),
         headerRight: () => (
           <Button
             variant="ghost"
             size="icon"
             className="rounded-full"
-            accessibilityLabel={t("settings")}
+            accessibilityLabel={t("settings.title")}
             onPress={() => router.push("/settings")}
           >
             <Icon as={Settings} size={24} />

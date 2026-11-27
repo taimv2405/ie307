@@ -1,5 +1,4 @@
 import "@/global.css";
-import "@/lib/i18n";
 
 import { PortalHost } from "@rn-primitives/portal";
 import { Stack } from "expo-router";
@@ -7,9 +6,12 @@ import { ThemeProvider } from "expo-router/react-navigation";
 import { StatusBar } from "expo-status-bar";
 import { useColorScheme } from "nativewind";
 
+import { initI18n } from "@/lib/i18n";
 import { NAV_THEME } from "@/lib/theme";
 
 export { ErrorBoundary } from "expo-router";
+
+initI18n();
 
 export default function RootLayout() {
   const { colorScheme } = useColorScheme();

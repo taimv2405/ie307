@@ -1,5 +1,11 @@
 {
-  "home": "Trang chủ",
-  "language": "Ngôn ngữ hiển thị",
-  "settings": "Cài đặt"
+  "home": {
+    "title": "Trang chủ"
+  },
+  "settings": {
+    "language": {
+      "title": "Ngôn ngữ hiển thị"
+    },
+    "title": "Cài đặt"
+  }
 }

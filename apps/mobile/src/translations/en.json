@@ -1,5 +1,11 @@
 {
-  "home": "Home",
-  "language": "Display language",
-  "settings": "Settings"
+  "home": {
+    "title": "Home"
+  },
+  "settings": {
+    "language": {
+      "title": "Display language"
+    },
+    "title": "Settings"
+  }
 }
