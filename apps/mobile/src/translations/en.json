@@ -1,5 +1,17 @@
 {
-  "home": "Home",
-  "language": "Display language",
-  "settings": "Settings"
+  "home": {
+    "title": "Home"
+  },
+  "settings": {
+    "colorScheme": {
+      "dark": "Dark",
+      "light": "Light",
+      "system": "System",
+      "title": "Theme"
+    },
+    "language": {
+      "title": "Display language"
+    },
+    "title": "Settings"
+  }
 }

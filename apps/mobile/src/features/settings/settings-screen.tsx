@@ -1,22 +1,19 @@
 import { Stack } from "expo-router";
 import { useTranslation } from "react-i18next";
-import { ScrollView, View } from "react-native";
+import { ScrollView } from "react-native";
 
-import { Text } from "@/components/ui/text";
-
-import { LanguagePicker } from "./language-picker";
+import { LanguageItem } from "./components/language-item";
+import { ColorSchemeItem } from "./components/color-scheme-item";
 
 export function SettingsScreen() {
   const { t } = useTranslation();
 
   return (
     <>
-      <Stack.Screen options={{ title: t("settings") }} />
-      <ScrollView contentContainerClassName="p-4">
-        <View className="flex-row flex-wrap items-center justify-between gap-4">
-          <Text className="font-medium">{t("language")}</Text>
-          <LanguagePicker />
-        </View>
+      <Stack.Screen options={{ title: t("settings.title") }} />
+      <ScrollView contentContainerClassName="gap-4 p-4">
+        <ColorSchemeItem />
+        <LanguageItem />
       </ScrollView>
     </>
   );

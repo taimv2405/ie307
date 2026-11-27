@@ -1,5 +1,17 @@
 {
-  "home": "Trang chủ",
-  "language": "Ngôn ngữ hiển thị",
-  "settings": "Cài đặt"
+  "home": {
+    "title": "Trang chủ"
+  },
+  "settings": {
+    "colorScheme": {
+      "dark": "Tối",
+      "light": "Sáng",
+      "system": "Hệ thống",
+      "title": "Giao diện"
+    },
+    "language": {
+      "title": "Ngôn ngữ hiển thị"
+    },
+    "title": "Cài đặt"
+  }
 }

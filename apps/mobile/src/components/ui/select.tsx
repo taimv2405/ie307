@@ -12,6 +12,7 @@ import {
 import * as React from "react";
 import { Platform, StyleSheet, View } from "react-native";
 import { FadeIn, FadeOut, ReduceMotion } from "react-native-reanimated";
+import { useSafeAreaInsets } from "react-native-safe-area-context";
 import { FullWindowOverlay as RNFullWindowOverlay } from "react-native-screens";
 
 type Option = SelectPrimitive.Option;
@@ -84,11 +85,23 @@ function SelectContent({
   children,
   position = "popper",
   portalHost,
+  insets,
   ...props
 }: React.ComponentProps<typeof SelectPrimitive.Content> & {
   className?: string;
   portalHost?: string;
 }) {
+  const safeAreaInsets = useSafeAreaInsets();
+  const contentInsets = insets ?? {
+    top: safeAreaInsets.top,
+    bottom: Platform.select({
+      ios: safeAreaInsets.bottom,
+      android: safeAreaInsets.bottom + 24,
+    }),
+    left: 12,
+    right: 12,
+  };
+
   return (
     <SelectPrimitive.Portal hostName={portalHost}>
       <FullWindowOverlay>
@@ -124,6 +137,7 @@ function SelectContent({
                   className,
                 )}
                 position={position}
+                insets={contentInsets}
                 {...props}
               >
                 <SelectScrollUpButton />
