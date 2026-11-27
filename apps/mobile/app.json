@@ -3,7 +3,7 @@
     "name": "ie307",
     "slug": "ie307",
     "version": "1.0.0",
-    "orientation": "portrait",
+    "orientation": "default",
     "icon": "./assets/images/icon.png",
     "scheme": "ie307",
     "userInterfaceStyle": "automatic",
