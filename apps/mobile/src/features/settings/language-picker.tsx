@@ -53,7 +53,11 @@ export function LanguagePicker() {
         }
       }}
     >
-      <SelectTrigger aria-label={t("language")} className="min-w-[140px]">
+      <SelectTrigger
+        aria-label={t("language")}
+        aria-valuetext={selected?.label}
+        className="min-w-[140px]"
+      >
         <View className="flex-row items-center gap-2">
           {selected && <LanguageFlag language={selected.value} />}
           <SelectValue placeholder={t("language")} />
