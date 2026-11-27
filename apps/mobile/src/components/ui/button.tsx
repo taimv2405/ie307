@@ -1,13 +1,7 @@
 import { TextClassContext } from "@/components/ui/text";
 import { cn } from "@/lib/utils";
 import { cva, type VariantProps } from "class-variance-authority";
-import { useState } from "react";
-import {
-  type Insets,
-  type LayoutRectangle,
-  Platform,
-  Pressable,
-} from "react-native";
+import { Platform, Pressable } from "react-native";
 
 const buttonVariants = cva(
   cn(
@@ -58,7 +52,10 @@ const buttonVariants = cva(
           "h-11 rounded-md px-6 sm:h-10",
           Platform.select({ web: "has-[>svg]:px-4" }),
         ),
-        icon: "h-10 w-10 sm:h-9 sm:w-9",
+        icon: Platform.select({
+          web: "h-10 w-10 sm:h-9 sm:w-9",
+          native: "h-12 w-12",
+        }),
       },
     },
     defaultVariants: {
@@ -109,27 +106,7 @@ type ButtonProps = React.ComponentProps<typeof Pressable> &
   React.RefAttributes<typeof Pressable> &
   VariantProps<typeof buttonVariants>;
 
-const MIN_TOUCH_TARGET = 48;
-
-function getMinTouchTargetHitSlop({
-  width,
-  height,
-}: Pick<LayoutRectangle, "width" | "height">): Insets | undefined {
-  const horizontal = Math.max(0, (MIN_TOUCH_TARGET - width) / 2);
-  const vertical = Math.max(0, (MIN_TOUCH_TARGET - height) / 2);
-  if (horizontal === 0 && vertical === 0) {
-    return undefined;
-  }
-  return {
-    top: vertical,
-    bottom: vertical,
-    left: horizontal,
-    right: horizontal,
-  };
-}
-
-function Button({ className, variant, size, onLayout, ...props }: ButtonProps) {
-  const [hitSlop, setHitSlop] = useState<Insets>();
+function Button({ className, variant, size, ...props }: ButtonProps) {
   return (
     <TextClassContext.Provider value={buttonTextVariants({ variant, size })}>
       <Pressable
@@ -138,11 +115,6 @@ function Button({ className, variant, size, onLayout, ...props }: ButtonProps) {
           buttonVariants({ variant, size }),
           className,
         )}
-        hitSlop={hitSlop}
-        onLayout={(event) => {
-          setHitSlop(getMinTouchTargetHitSlop(event.nativeEvent.layout));
-          onLayout?.(event);
-        }}
         role="button"
         {...props}
       />
