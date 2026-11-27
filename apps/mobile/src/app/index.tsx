@@ -1,9 +1,16 @@
-import { Text, View } from "react-native";
+import { useTranslation } from "react-i18next";
+import { View } from "react-native";
+
+import { LanguagePicker } from "@/components/language-picker";
+import { Text } from "@/components/ui/text";
 
 export default function Index() {
+  const { t } = useTranslation();
+
   return (
-    <View className="flex-1 items-center justify-center">
-      <Text>Edit src/app/index.tsx to edit this screen.</Text>
+    <View className="flex-1 items-center justify-center gap-4">
+      <Text>{t("welcome")}</Text>
+      <LanguagePicker />
     </View>
   );
 }
