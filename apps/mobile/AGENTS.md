@@ -25,3 +25,4 @@ Docs: https://docs.expo.dev/eas/index.md
 - Expo Go only includes its bundled native modules. After adding a library with native code, the app needs a development build: `pnpm expo run:ios|android` locally, or `eas build --profile development`.
 - Prefer recommended Expo modules over third-party libraries, and check your available skills before adding dependencies. Docs: https://docs.expo.dev/versions/latest/index.md
 - Add dependencies with `pnpm expo install <pkg>` (`--dev` for devDependencies, not `-- --dev`), so versions match the Expo SDK.
+- For UI, check React Native Reusables first. If it has the component you need, add it with `pnpm dlx @react-native-reusables/cli@latest add <name>`.
